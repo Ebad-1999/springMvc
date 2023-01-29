@@ -1,26 +1,30 @@
 package com.tpe.domain;
 
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-//@Entity
-//@Table(name="tbl_student")
+@Entity
+@Table(name="tbl_student")
 public class Student {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
 
+    @NotEmpty(message = "Please enter firstName")
     private String firstName;
 
+    @NotEmpty(message = "Please enter lastName")
     private String lastName;
 
+    @NotNull(message="Please enter grade")
     private Integer grade;
 
-    private LocalDateTime create = LocalDateTime.now();
+    private LocalDateTime createDate = LocalDateTime.now();
+
+
+    //getter and setter
 
     public Long getId() {
         return id;
@@ -54,15 +58,15 @@ public class Student {
         this.grade = grade;
     }
 
-    public LocalDateTime getCreate() {
-        return create;
+    public LocalDateTime getCreateDate() {
+        return createDate;
     }
 
-//    public void setCreate(LocalDateTime create) {
-//        this.create = create;
+//    public void setCreateDate(LocalDateTime createDate) {
+//        this.createDate = createDate;
 //    }
+    //toString
 
-    //to String
 
     @Override
     public String toString() {
@@ -71,7 +75,7 @@ public class Student {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", grade=" + grade +
-                ", create=" + create +
+                ", created=" + createDate +
                 '}';
     }
 }
