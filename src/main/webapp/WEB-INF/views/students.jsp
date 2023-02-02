@@ -22,6 +22,8 @@
 				<th>Last Name</th>
 				<th>Grade</th>
 				<th>CreateDate</th>
+				<th>Action</th>
+
 			</tr>
 
 			<c:forEach items="${students}" var="student" varStatus="status">
